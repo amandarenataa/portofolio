@@ -28,6 +28,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap;}
 .nav-links a{font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-light);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--gold);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gold);border-radius:2px;transition:all 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(11,20,38,0.97);backdrop-filter:blur(24px);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--white);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;}
+.mobile-menu a:hover{color:var(--gold);}
 section{padding:3rem 8vw;position:relative;}
 .section-label{font-family:'DM Mono',monospace;font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
 .section-label::before{content:'// ';opacity:0.45;}
@@ -171,10 +180,17 @@ h1 em{font-style:italic;color:var(--gold);display:block;}
 footer{padding:1.8rem 8vw;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:0.76rem;color:var(--slate);flex-wrap:wrap;gap:1rem;}
 .fm{font-family:'DM Mono',monospace;color:var(--gold);}
 @media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .ielts-bar{font-size:0.72rem;padding:0.55rem 1rem;flex-wrap:wrap;justify-content:center;}
+  .contact-card{padding:2.5rem 1.5rem;}
   #hero{grid-template-columns:1fr;padding-top:8rem;text-align:center;}
-  .hero-photo{display:none;}
+  .hero-photo{display:flex;justify-content:center;margin-bottom:2rem;}
+  .hero-badges{justify-content:center;}
   .hero-sub,.hero-ctas{margin-left:auto;margin-right:auto;}
   .hero-ctas{justify-content:center;}
+  .photo-frame{width:220px;height:280px;}
+  .ps1{left:-40px;}.ps2{left:-35px;}.ps3{right:-40px;}  
   .tab-content.active,.research-grid,.edu-grid{grid-template-columns:1fr;}
   .skill-highlight{flex-direction:column;gap:1rem;text-align:center;}
   .hl-div{display:none;}
@@ -202,7 +218,21 @@ footer{padding:1.8rem 8vw;border-top:1px solid var(--border);display:flex;align-
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#awards" class="mobile-link">Awards</a>
+  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#research" class="mobile-link">Research</a>
+  <a href="#professional" class="mobile-link">Experience</a>
+  <a href="#organizational" class="mobile-link">Organizations</a>
+  <a href="#education" class="mobile-link">Education</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
 
 <section id="hero">
   <div class="hero-bg"></div>
@@ -819,6 +849,20 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+  });
+});
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
   });
 });
 const io=new IntersectionObserver(entries=>{
