@@ -133,11 +133,27 @@ h1 em{font-style:italic;color:var(--gold);display:block;}
 .cert-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.4rem;display:flex;align-items:flex-start;gap:0.9rem;transition:all 0.25s;opacity:0;transform:translateY(18px);}
 .cert-card.visible{opacity:1;transform:translateY(0);}
 .cert-card:hover{border-color:var(--gold);transform:translateY(-2px);}
-.cert-logo{width:38px;height:38px;border-radius:8px;background:var(--gold-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.cert-logo{
+  width:50px !important;
+  height:50px !important;
+  min-width:50px !important;
+  min-height:50px !important;
+  max-width:50px !important;
+  max-height:50px !important;
+  font-size:1.6rem !important;  
+  flex-shrink:0 !important;
+  flex-grow:0 !important;
+  align-self:flex-start !important;
+}
+.cert-logo svg{
+  width:35px !important;
+  height:35px !important;
+}
+.cert-card > div{display:flex;flex-direction:column;flex:1;min-height:100%;}
 .cert-card h4{font-size:0.84rem;font-weight:600;margin-bottom:0.18rem;line-height:1.4;}
 .cert-card p{font-size:0.74rem;color:var(--slate);line-height:1.55;}
 .cert-year{font-family:'DM Mono',monospace;font-size:0.66rem;color:var(--gold);margin-top:0.22rem;}
-.cert-footer{display:flex;align-items:center;justify-content:space-between;margin-top:0.5rem;padding-top:0.5rem;border-top:0.1px solid var(--border);}
+.cert-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:0.5rem;border-top:0.1px solid var(--border);}
 #leadership{background:var(--navy-mid);}
 #professional::before,#organizational::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 10% 50%,rgba(201,168,76,0.04) 0%,transparent 60%);pointer-events:none;}
 #leadership::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 10% 50%,rgba(201,168,76,0.04) 0%,transparent 60%);pointer-events:none;}
@@ -607,6 +623,17 @@ footer{padding:1.8rem 8vw;border-top:1px solid var(--border);display:flex;align-
   <h2>Certifications &amp; Coursework</h2>
   <p class="section-desc">Continuous upskilling through courses.</p>
   <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-logo">&#127760;</div>
+      <div>
+        <h4>IELTS Academic (Band 7.5)</h4>
+        <p>Equivalent to CEFR C1 (Advanced) Proficiency.</p>
+        <div class="cert-year">IDP Education &middot; Issued Apr 2025 – Expires Apr 2027</div>
+        <div class="cert-footer">
+        <a href="https://drive.google.com/file/d/1W4iJuolF0Vlb1QkJQbHPNMCax3Twb9FD/view?usp=sharing" target="_blank" class="project-link">Result Card &rarr;</a> 
+      </div>
+      </div>
+    </div>
     <div class="cert-card">
       <div class="cert-logo">&#128202;</div>
       <div>
