@@ -9,7 +9,7 @@ A single-page personal portfolio website built with pure HTML5, CSS3, and Vanill
 
 ## 🔗 Live Preview
 
-Open `index.html` directly in any browser, or deploy to GitHub Pages / Netlify for a shareable link.
+👉 [amanda-renata-go.vercel.app](https://amanda-renata-go.vercel.app)
 
 ---
 
@@ -36,17 +36,13 @@ portfolio/
 
 ---
 
-## 🖼 Adding Your Photo
+## 🚀 Deployment
 
-Place your photo file in the **same folder** as `index.html` and make sure the filename matches:
+### Vercel
+Deployed via [Vercel](https://vercel.com).  
+Live URL: [amanda-renata-go.vercel.app](https://amanda-renata-go.vercel.app)
 
-```html
-<img id="heroImg" src="picture.jpg" alt="Amanda Renata Go">
-```
-
-Rename your file to `picture.jpg`, or change the `src` value to match your filename (e.g. `photo.png`).
-
-Once loaded, you can **click and drag** the photo inside the frame to adjust the crop position.
+To update the site, push changes to the connected GitHub repository — Vercel will automatically redeploy.
 
 ---
 
@@ -63,20 +59,6 @@ Once loaded, you can **click and drag** the photo inside the frame to adjust the
 | Certification links | `href="..."` inside each `.cert-footer` |
 | Award documentation | `href="..."` inside each `.cert-footer` in awards section |
 
----
-
-## 🚀 Deployment
-
-### GitHub Pages (free)
-1. Create a new GitHub repository
-2. Upload `index.html` and `picture.jpg`
-3. Go to **Settings → Pages → Source → main branch**
-4. Your site will be live at `https://yourusername.github.io/repository-name`
-
-### Netlify (free, custom domain support)
-1. Go to [netlify.com](https://netlify.com) and sign up
-2. Drag and drop your project folder onto the Netlify dashboard
-3. Done — you get a live URL instantly
 
 ---
 
