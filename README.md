@@ -30,7 +30,7 @@ Open `index.html` directly in any browser, or deploy to GitHub Pages / Netlify f
 ```
 portfolio/
 ├── index.html        ← entire site (HTML + CSS + JS in one file)
-├── picture.jpg       ← your profile photo (place in same folder)
+├── picture.jpg       ← profile photo 
 └── README.md
 ```
 
