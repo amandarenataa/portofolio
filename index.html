@@ -202,10 +202,18 @@
   <!-- <div class="section-label">Selected Work</div> -->
   <h2>Technical Project Gallery</h2>
   <p class="section-desc">Each project was built to solve a real problem, from automating service booking workflows to extracting policy relevant insight from social media text.</p>
+  
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="data">Data Analytics & Science</button>
+    <button class="filter-btn" data-filter="web">Web/App Development</button>
+  </div>
+  
   <div class="projects-grid">
-    <div class="project-card">
+    <div class="project-card" data-category="web">
       <div class="project-accent"></div>
-      <div class="project-num">01 / SYSTEMS ARCHITECTURE</div>
+      <div class="project-num">SYSTEMS ARCHITECTURE</div>
       <div class="project-badge">&#129529; Laravel &middot; PHP &middot; MySQL</div>
       <h3>Enterprise Grade Service Automation Engine</h3>
       <p>Architected and deployed a full stack Laravel system to automate complex service booking workflows. Designed a normalized relational database and implemented MVC architecture to ensure high application scalability. Engineered secure role-based access control (RBAC) to manage real-time scheduling and financial tracking.</p>
@@ -216,9 +224,9 @@
         <span style="font-size:0.73rem;color:var(--slate)">Full-Stack</span>
       </div>
     </div>
-    <div class="project-card">
+    <div class="project-card" data-category="web">
       <div class="project-accent"></div>
-      <div class="project-num">02 / SYSTEM ANALYSIS & DESIGN</div>
+      <div class="project-num">SYSTEM ANALYSIS & DESIGN</div>
       <div class="project-badge">&#127970; C# &middot; Figma &middot; SAD</div>
       <h3>SME Operations Modernization & SAD Strategy</h3>
       <p>Performed a comprehensive System Analysis & Design (SAD) engagement to modernize operational workflows for a local enterprise. Translated stakeholder requirements into high fidelity Figma prototypes and technical UML documentation before implementing a C# desktop solution for inventory and transaction management.</p>
@@ -228,9 +236,9 @@
         <span style="font-size:0.73rem;color:var(--slate)">Desktop App</span>
       </div>
     </div>
-    <div class="project-card">
+    <div class="project-card" data-category="data">
       <div class="project-accent"></div>
-      <div class="project-num">03 / STRATEGIC ANALYTICS</div>
+      <div class="project-num">STRATEGIC ANALYTICS</div>
       <div class="project-badge">&#128202; Tableau &middot; KPI Dashboards</div>
       <h3>Executive KPI Intelligence Dashboards</h3>
       <p>Transformed complex, multi dimensional business datasets into interactive Tableau visual reports to identify critical operational trends. Cleaned and modeled raw data to track Key Performance Indicators (KPIs), enabling data driven strategic planning and fiscal oversight.</p>
@@ -241,9 +249,9 @@
         <span style="font-size:0.73rem;color:var(--slate)">BI / Analytics</span>
       </div>
     </div>
-    <div class="project-card">
+    <div class="project-card" data-category="data">
       <div class="project-accent"></div>
-      <div class="project-num">04 / BUSINESS INTELLIGENCE</div>
+      <div class="project-num">BUSINESS INTELLIGENCE</div>
       <div class="project-badge">&#128200; Looker Studio &middot; Correlation Analysis</div>
       <h3>Student Lifestyle & Academic Analytics</h3>
       <p>
@@ -264,9 +272,9 @@
           <span style="font-size:0.73rem;color:var(--slate)">BI / Analytics</span>
       </div>
   </div>
-    <div class="project-card">
+    <div class="project-card" data-category="web">
       <div class="project-accent"></div>
-      <div class="project-num">05 / PRODUCT DEVELOPMENT</div>
+      <div class="project-num">PRODUCT DEVELOPMENT</div>
       <div class="project-badge">&#128269; Path Seeker &middot; Market Validation</div>
       <h3>Path Seeker: Career Path Recommendation System</h3>
       <p>
@@ -287,6 +295,12 @@
           <span style="font-size:0.73rem;color:var(--slate)">Product / Research</span>
       </div>
   </div>
+  
+  </div>
+  
+  <!-- View More Button for Projects -->
+  <div class="view-more-container" id="projectsViewMore">
+    <button class="view-more-btn">View More Projects</button>
   </div>
 </section>
 
@@ -555,6 +569,11 @@
       </div>
     
   </div>
+  
+  <!-- View More Button for Certifications -->
+  <div class="view-more-container" id="certsViewMore">
+    <button class="view-more-btn">View More Certifications</button>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -641,6 +660,11 @@
       </div>
       </div>
     </div>
+  </div>
+  
+  <!-- View More Button for Awards -->
+  <div class="view-more-container" id="awardsViewMore">
+    <button class="view-more-btn">View More Awards</button>
   </div>
 </section>
 

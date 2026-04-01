@@ -100,3 +100,101 @@ const io=new IntersectionObserver(entries=>{
     setTimeout(()=>hint && hint.classList.add('hidden'), 1500);
   },{once:true});
 })();
+
+// Project Filter Functionality
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active class from all buttons
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    // Add active class to clicked button
+    btn.classList.add('active');
+    
+    const filter = btn.dataset.filter;
+    const projects = document.querySelectorAll('.project-card');
+    
+    projects.forEach(project => {
+      if (filter === 'all') {
+        project.style.display = 'flex';
+      } else {
+        const category = project.dataset.category;
+        project.style.display = category === filter ? 'flex' : 'none';
+      }
+    });
+    
+    // After filtering, reapply view more logic
+    applyViewMoreLogic('projects');
+  });
+});
+
+// View More Functionality
+function applyViewMoreLogic(section) {
+  let grid, cards, viewMoreBtn, cardsPerRow, initialRows;
+  
+  if (section === 'projects') {
+    grid = document.querySelector('.projects-grid');
+    cards = Array.from(document.querySelectorAll('.project-card')).filter(card => card.style.display !== 'none');
+    viewMoreBtn = document.querySelector('#projectsViewMore');
+    cardsPerRow = getCardsPerRow(grid);
+    initialRows = 2;
+  } else if (section === 'awards') {
+    grid = document.querySelector('.awards-grid');
+    cards = Array.from(document.querySelectorAll('.award-card'));
+    viewMoreBtn = document.querySelector('#awardsViewMore');
+    cardsPerRow = getCardsPerRow(grid);
+    initialRows = 2;
+  } else if (section === 'certifications') {
+    grid = document.querySelector('.certs-grid');
+    cards = Array.from(document.querySelectorAll('.cert-card'));
+    viewMoreBtn = document.querySelector('#certsViewMore');
+    cardsPerRow = getCardsPerRow(grid);
+    initialRows = 2;
+  }
+  
+  const initialCardCount = cardsPerRow * initialRows;
+  
+  // Hide cards beyond initial rows
+  cards.forEach((card, index) => {
+    if (index >= initialCardCount) {
+      card.classList.add('hidden');
+    } else {
+      card.classList.remove('hidden');
+    }
+  });
+  
+  // Show/hide view more button
+  if (cards.length > initialCardCount) {
+    viewMoreBtn.classList.remove('hidden');
+  } else {
+    viewMoreBtn.classList.add('hidden');
+  }
+}
+
+function getCardsPerRow(grid) {
+  const gridStyle = window.getComputedStyle(grid);
+  const gridTemplateColumns = gridStyle.gridTemplateColumns;
+  return gridTemplateColumns.split(' ').length;
+}
+
+// View More button click handlers
+document.querySelector('#projectsViewMore .view-more-btn').addEventListener('click', function() {
+  const cards = Array.from(document.querySelectorAll('.project-card')).filter(card => card.style.display !== 'none');
+  cards.forEach(card => card.classList.remove('hidden'));
+  document.querySelector('#projectsViewMore').classList.add('hidden');
+});
+
+document.querySelector('#awardsViewMore .view-more-btn').addEventListener('click', function() {
+  document.querySelectorAll('.award-card').forEach(card => card.classList.remove('hidden'));
+  document.querySelector('#awardsViewMore').classList.add('hidden');
+});
+
+document.querySelector('#certsViewMore .view-more-btn').addEventListener('click', function() {
+  document.querySelectorAll('.cert-card').forEach(card => card.classList.remove('hidden'));
+  document.querySelector('#certsViewMore').classList.add('hidden');
+});
+
+// Initialize view more on page load
+window.addEventListener('load', () => {
+  applyViewMoreLogic('projects');
+  applyViewMoreLogic('awards');
+  applyViewMoreLogic('certifications');
+});
